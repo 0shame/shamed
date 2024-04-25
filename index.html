@@ -1,30 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="ca">
 <title>shame</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style>
   body {
+    background-color: #000;
+    overflow: hidden;
     margin: 0;
     padding: 0;
-    background-color: #010101;
+  }
+  .stars {
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    animation: animateStars 50s linear infinite;
+  }
+  @keyframes animateStars {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+  }
+  .content {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: #fff;
+    font-family: 'Your Custom Font', sans-serif;
+    font-size: 2em;
   }
-  .coming-soon {
+  .dropdown {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
     text-align: center;
-    font-size: 24px;
-    color: #ffffff;
+    font-family: 'Your Custom Font', sans-serif;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    min-width: 160px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+    font-family: 'Your Custom Font', sans-serif;
+    animation: fadeIn 0.5s ease forwards;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .dropdown-content a {
+    display: block;
+    color: #fff;
+    padding: 10px 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  .dropdown-button {
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+  }
+  .dropdown-button:hover {
+    transform: translateY(2px);
   }
 </style>
-<body>
-  <div class="coming-soon">
-    <h1>coming soon.</h1>
-  </div>
-</body>
 </head>
-</html>
+<body>
+<div class="stars"></div>
+<div class="content">
+  <p>Coming Soon...</p>
+</div>
+<div class="dropdown">
+  <div class="dropdown-button" onclick="toggleDropdown()">
+    <i class="fas fa-chevron-down"></i> Info
+  </div>
+  <div class="dropdown-content" id="dropdownContent">
+    <a href="https://discord.gg/robot">Discord Server</a>
+    <a href="https://docs.shame.lol">Commands</a>
+  </div>
+</div>
+
+<script>
+  function toggleDropdown() {
+    var dropdownContent = document.getElementById("dropdownContent");
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  }
+</script>
+
+
+
+</body></html>
